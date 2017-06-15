@@ -1,0 +1,21 @@
+{
+  "name": "Line bot",
+  "description": "line chat bot api",
+  "website": "https://github.com/iiwudaffk/linebot-sdk-nodejs-example.git",
+  "repository": "https://github.com/iiwudaffk/linebot-sdk-nodejs-example.git",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "success_url": "/",
+  "keywords": [
+    "node",
+    "express",
+    "socket.io",
+    "realtime"
+  ],
+  "scripts": {
+  },
+  "addons": [
+  ],
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-nodejs"
+  }
+}
