@@ -32,6 +32,7 @@ app.post('/webhook', (req, res) => {
 });
 
 var messageReturn = 'ว่าไงนะ อีกทีสิ ';
+var messageRand = ['ง่วงจัง','กี่โมงแล้ว ?','ขอบคุณค่ะ','คิดถึงนะ','ไสว่าซิบ่ถิ่มกัน','beta test เอ๋อๆหน่อย','หิวข้าวอะ','ดริ้งกันไหม','อย่าว่ากันดิ'];
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
@@ -48,7 +49,12 @@ else if( event.message.text === 'ควย' || event.message.text === 'สัส
 }
 else if (event.message.text.indexOf("ทำไร") + 1)
 {
-	messageReturn = 'ไม่บอกหรอก อิอิ ';
+	var item = messageRand[Math.floor(Math.random()*messageRand.length)];
+	messageReturn = item;
+}
+else
+{
+	messageReturn = '';
 }
   const echo = { type: 'text', text: messageReturn };
   
