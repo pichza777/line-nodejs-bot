@@ -44,7 +44,11 @@ if( event.message.text === 'สวัสดี' || event.message.text === 'hello
 }
 else if( event.message.text === 'ควย' || event.message.text === 'สัส' || event.message.text === 'เหี้ย')
 {
-	messageReturn = 'ต่อยกับกุปะละ ';
+	messageReturn = 'ไม่พูดหยาบคายนะค่ะสัส ';
+}
+else if (event.message.text.indexOf("ทำไร") + 1)
+{
+	messageReturn = 'ไม่บอกหรอก อิอิ ';
 }
   const echo = { type: 'text', text: messageReturn };
   
