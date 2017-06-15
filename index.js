@@ -47,14 +47,14 @@ else if( event.message.text === 'ควย' || event.message.text === 'สัส
 {
 	messageReturn = 'ไม่พูดหยาบคายนะค่ะสัส ';
 }
-else if (event.message.text.indexOf("ทำไร") + 1)
+else if (event.message.text.indexOf("ทำ") + 1)
 {
-	var item = messageRand[Math.floor(Math.random()*messageRand.length)];
-	messageReturn = item;
+	messageReturn = 'ไม่บอกหรอก ความลับ';
 }
 else
 {
-	messageReturn = '';
+	var item = messageRand[Math.floor(Math.random()*messageRand.length)];
+	messageReturn = item;
 }
   const echo = { type: 'text', text: messageReturn };
   
