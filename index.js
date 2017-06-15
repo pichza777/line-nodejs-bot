@@ -38,8 +38,7 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  const echo = 'ควย';
-  //{ type: 'text', text: event.message.text };
+  const echo = { type: 'text', text: 'ควยไร' };
   
   return client.replyMessage(event.replyToken, echo);
 }
