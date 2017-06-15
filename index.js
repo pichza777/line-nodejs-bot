@@ -42,21 +42,7 @@ function handleEvent(event) {
 
 // call message service
 const call_msgservice = (userId,msg) => {
-    console.log('call_msgservice: ' + msg);
-    return new Promise((resolve, reject) => {
-        const formdata = { user: userId, text: msg };
-        request.post(process.env.URL_BAEBYBOT_MESSAGE, { form: formdata }, function (error, response, body) {
-            if (!error) {
-                const rr = JSON.parse(body);
-                const echo = { type: 'text', text: rr['restext'] };
-                console.log('call_msgservice: success');
-                resolve(echo);
-            } else {
-                console.log('call_msgservice: fail');
-                reject(error);
-            }
-        })
-    })
+	return new Promise((resolve) => {if(msg){resolve(msg);}else{reject(msg);}}
 }
 
 // listen on port
