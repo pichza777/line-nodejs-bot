@@ -31,7 +31,7 @@ app.post('/webhook', (req, res) => {
 	.catch((err)=>{console.log(err)})
 });
 
-const messageReturn = 'ว่าไงนะ อีกทีสิ ';
+var messageReturn = 'ว่าไงนะ อีกทีสิ ';
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
