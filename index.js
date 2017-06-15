@@ -1,52 +1,20 @@
-'use strict';
+var express = require('express')
+var bodyParser = require('body-parser')
+var app = express()
+var cors = require('cors')
 
-const line = require('@line/bot-sdk');
-const express = require('express');
+app.use(cors())
+app.use(bodyParser.json())
 
-// create LINE SDK config from env variables
-const config = {
-  channelAccessToken: process.env.aAMls5K18jevEiIZZlJ1zyu5u8gLxv7FGOYcaHak5tt2Zni2NfzWs5nfapzErLNnBsK8TlaCnHJvxBg1md67eMxWaFPl9GE/sCKzFpC0mM1ai70aKau/lF+0svFNjCWq8Zv1+RMvO4eRAVeYfoEybwdB04t89/1O/w1cDnyilFU=,
-  channelSecret: process.env.047a51ae1557c6a602e7a417d2e68182,
-};
-// create LINE SDK client
-const client = new line.Client(config);
+app.set('port', (process.env.PORT || 4000))
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
-// create Express app
-// about Express itself: https://expressjs.com/
-const app = express();
-app.use(middleware(config))
-app.use(bp.json())
 
-// register a webhook handler with middleware
-// about the middleware, please refer to doc
-app.post('/webhook', (req, res) => {
-	//console.log(req);
-	Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
-	.catch((err)=>{console.log(err)})
-});
+app.get('/', function (req, res) {
+	res.send('Hello')
+})
 
-// event handler
-function handleEvent(event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    // ignore non-text-message event
-    return Promise.resolve(null);
-  }
-
-  call_msgservice(event.source.userId,event.message.text)
-  .then((echo)=>client.replyMessage(event.replyToken, echo))
-  .then((result)=>Promise.resolve(result))
-  .catch((err)=>Promise.reject(result))
-}
-
-// call message service
-const call_msgservice = (userId,msg) => {
-	return new Promise((resolve) => {if(msg){resolve(msg);}else{reject(msg);}}
-}
-
-// listen on port
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`listening on ${port}`);
-});
+app.listen(app.get('port'), function () {
+  console.log('run at port', app.get('port'))
+})
