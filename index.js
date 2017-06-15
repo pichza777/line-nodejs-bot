@@ -38,7 +38,8 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  const echo = { type: 'text', text: event.message.text };
+  const echo = 'ควย';
+  //{ type: 'text', text: event.message.text };
   
   return client.replyMessage(event.replyToken, echo);
 }
