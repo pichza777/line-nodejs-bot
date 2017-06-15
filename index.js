@@ -38,11 +38,11 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-if( event.message.text == 'สวัสดี' || event.message.text == 'hello' || event.message.text == 'Hello')
+if( event.message.text === 'สวัสดี' || event.message.text === 'hello' || event.message.text === 'Hello')
 {
 	messageReturn = 'สวัสดีเหมือนกันจ้า';
 }
-else if( event.message.text == 'ควย' || event.message.text == 'สัส' || event.message.text == 'เหี้ย')
+else if( event.message.text === 'ควย' || event.message.text === 'สัส' || event.message.text === 'เหี้ย')
 {
 	messageReturn = 'ต่อยกับกุปะละ ';
 }
