@@ -31,14 +31,22 @@ app.post('/webhook', (req, res) => {
 	.catch((err)=>{console.log(err)})
 });
 
+const messageReturn = 'ว่าไงนะ อีกทีสิ ';
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-
-  const echo = { type: 'text', text: 'ควยไร' };
+if( event.message.text == 'สวัสดี' || event.message.text == 'hello' || event.message.text == 'Hello')
+{
+	messageReturn = 'สวัสดีเหมือนกันจ้า';
+}
+else if( event.message.text == 'ควย' || event.message.text == 'สัส' || event.message.text == 'เหี้ย')
+{
+	messageReturn = 'ต่อยกับกุปะละ ';
+}
+  const echo = { type: 'text', text: messageReturn };
   
   return client.replyMessage(event.replyToken, echo);
 }
