@@ -94,9 +94,9 @@ function handleEvent(event) {
         messageReturn = item;
     }
     else if (event.message.text.indexOf("BTC") + 1) {
-        var item;
-        //var item = messageRand[Math.floor(Math.random()*messageRand.length)];
-        messageReturn = 'บิทควย';
+        var a = open("https://www.google.com/finance/converter?a=1&from=BTC&to=THB");
+        var b = document.documentElement.innerHTML;
+        messageReturn = b;
     }
     else {
         messageReturn = '';
