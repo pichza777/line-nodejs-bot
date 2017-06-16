@@ -33,6 +33,7 @@ app.post('/webhook', (req, res) => {
 
 var messageReturn = 'ว่าไงนะ อีกทีสิ ';
 var messageRand = ['ง่วงจัง','กี่โมงแล้ว ?','ขอบคุณค่ะ','คิดถึงนะ','ไสว่าซิบ่ถิ่มกัน','beta test เอ๋อๆหน่อย','หิวข้าวอะ','ดริ้งกันไหม','อย่าว่ากันดิ'];
+var messageHa = ['lol','ขำหรอ ?','666666','5555555','ตลกจัง','อารมณ์ดีเพราะมีความสุข','ขำหาพร่อง','อิอิ','ตลกละดิ'];
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
@@ -43,7 +44,7 @@ if( event.message.text === 'สวัสดี' || event.message.text === 'hello
 {
 	messageReturn = 'สวัสดีเหมือนกันจ้า';
 }
-else if( event.message.text === 'ควย' || event.message.text === 'สัส' || event.message.text === 'เหี้ย')
+else if( event.message.text === 'ควย' || event.message.text === 'สัส' || event.message.text === 'เหี้ย ' || event.message.text === 'กวย')
 {
 	messageReturn = 'ไม่พูดหยาบคายนะค่ะสัส ';
 }
@@ -58,17 +59,35 @@ else if (event.message.text.indexOf(".") + 1)
 }
 else if (event.message.text.indexOf("55") + 1)
 {
-	messageReturn = 'ขำหรอ';
+	var item = messageHa[Math.floor(Math.random()*messageHa.length)];
+	messageReturn = item;
 }
 else if (event.message.text.indexOf("กี่โมง") + 1)
 {
+	var thday = new Array ("อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์"); 
+	var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
 	var date = new Date();
-	messageReturn = 'ขณะนี้เวลา '+ date;
+	messageReturn = 'วัน '+ thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " + thmonth[now.getMonth()]+ " " + (0+now.getYear()+543);
 }
 else if (event.message.text.indexOf("ร้องเพลง") + 1)
 {
 	
 	messageReturn = 'ให้มัน หะ หะ หะ หะ หะ หายยยยย';
+}
+else if (event.message.text.indexOf("ขำ") + 1)
+{
+	
+	messageReturn = 'แล้วแต่ ...';
+}
+else if (event.message.text.indexOf("น่ารัก") + 1)
+{
+	
+	messageReturn = 'ใครๆก็ว่าแบบนั้นนะ';
+}
+else if (event.message.text.indexOf("อิอิ") + 1)
+{
+	var item = messageRand[Math.floor(Math.random()*messageRand.length)];
+	messageReturn = item;
 }
 else
 {
