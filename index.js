@@ -51,10 +51,28 @@ else if (event.message.text.indexOf("ทำ") + 1)
 {
 	messageReturn = 'ไม่บอกหรอก ความลับ';
 }
-else
+else if (event.message.text.indexOf(".") + 1)
 {
 	var item = messageRand[Math.floor(Math.random()*messageRand.length)];
 	messageReturn = item;
+}
+else if (event.message.text.indexOf("55") + 1)
+{
+	messageReturn = 'ขำหรอ';
+}
+else if (event.message.text.indexOf("กี่โมง") + 1)
+{
+	var date = new Date();
+	messageReturn = 'ขณะนี้เวลา '+ date;
+}
+else if (event.message.text.indexOf("ร้องเพลง") + 1)
+{
+	
+	messageReturn = 'ให้มัน หะ หะ หะ หะ หะ หายยยยย';
+}
+else
+{
+	messageReturn = '';
 }
   const echo = { type: 'text', text: messageReturn };
   
