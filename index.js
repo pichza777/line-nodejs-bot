@@ -70,7 +70,7 @@ else if (event.message.text.indexOf("กี่โมง") + 1)
 {
  var newDate = new Date()-420;
 
-	messageReturn = newDate.toLocaleString();
+	messageReturn = newDate;
 }
 else if (event.message.text.indexOf("ร้องเพลง") + 1)
 {
