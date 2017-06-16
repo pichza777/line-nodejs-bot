@@ -130,10 +130,6 @@ app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
 
-const cheerio = require('cheerio')
-const request = require('superagent');
-
-function converter(options) {
   return new Promise(function(resolve, reject) {
     const source = 'https://www.google.com/finance/converter'
     const queryString = {
