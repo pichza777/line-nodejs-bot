@@ -31,6 +31,15 @@ app.post('/webhook', (req, res) => {
 	.catch((err)=>{console.log(err)})
 });
 
+const converter = require('google-currency')
+
+const options = {
+  from: "USD",
+  to: "IDR",
+  amount: 1
+}
+
+
 var messageReturn = 'ว่าไงนะ อีกทีสิ ';
 var messageRand = ['ง่วงจัง','กี่โมงแล้ว ?','ขอบคุณค่ะ','คิดถึงนะ','ไสว่าซิบ่ถิ่มกัน','beta test เอ๋อๆหน่อย','หิวข้าวอะ','ดริ้งกันไหม','อย่าว่ากันดิ'];
 var messageHa = ['lol','ขำหรอ ?','666666','5555555','ตลกจัง','อารมณ์ดีเพราะมีความสุข','ขำหาพร่อง','อิอิ','ตลกละดิ'];
@@ -68,7 +77,7 @@ else if (event.message.text.indexOf("55") + 1)
 }
 else if (event.message.text.indexOf("กี่โมง") + 1)
 {
- var newDate = new Date()-420;
+ var newDate = new Date();
 
 	messageReturn = newDate;
 }
@@ -109,7 +118,11 @@ else if (event.message.text.indexOf("อาหาร") + 1)
 }
 else if (event.message.text.indexOf("BTC") + 1)
 {
+	var item;
 	//var item = messageRand[Math.floor(Math.random()*messageRand.length)];
+	converter(options).then(value => {
+  item = value;
+		})
 	messageReturn = 'บิทควย';
 }
 else
@@ -129,3 +142,38 @@ app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
 
+const cheerio = require('cheerio')
+const request = require('superagent');
+
+function converter(options) {
+  return new Promise(function(resolve, reject) {
+    const source = 'https://www.google.com/finance/converter'
+    const queryString = {
+      a: options.amount,
+      from: options.from,
+      to: options.to
+    }
+    request
+      .get(source)
+      .query(queryString)
+      .end(function(error, response){
+        const $ = cheerio.load(response.text, {normalizeWhitespace: true})
+        const fromResult = "BTC"
+        const toResult = "THB"
+        const amountResult = "1"
+        const converted = $('#currency_converter_result .bld').text()
+
+        if (!error && response.statusCode == 200) {
+          resolve({
+            from: fromResult,
+            to: toResult,
+            amount: parseFloat(amountResult),
+            converted: parseFloat(converted) || parseFloat(amountResult),
+            url: response.req.url
+          })
+        } else {
+          reject(error);
+        }
+      })
+  })
+}
