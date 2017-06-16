@@ -71,18 +71,8 @@ else if (event.message.text.indexOf("กี่โมง") + 1)
  var year= new Array("ชวด","ฉลู","ขาล","เถาะ","มะโรง","มะเส็ง","มะเมีย","มะแม","วอก","ระกา","จอ","กุล") 
 
  var now = new Date()
- var result = days[now.getDay()]+" "
- var add1=1900
- var add2=add1+543
-/* result += now.toLocaleString()  */
- result += now.getDate()
- result += " "+month[now.getMonth()]+" พ.ศ. "
- if(now.getYear())
- {add1=2;add2=add1+541}
- result += now.getYear()+add2
- result += " ปี"+year[(now.getYear()+add2+5)%12]
- result += " เวลา "+now.getHours()+" นาฬิกา "
- result += now.getMinutes()+" นาที" 
+ result = now.toLocaleString() +" " + now.toLocaleTimeString();
+
 	messageReturn = result;
 }
 else if (event.message.text.indexOf("ร้องเพลง") + 1)
