@@ -64,16 +64,15 @@ else if (event.message.text.indexOf("55") + 1)
 }
 else if (event.message.text.indexOf("กี่โมง") + 1)
 {
-	 var days = new Array("วันอาทิตย์ที่","วันจันทร์ที่","วันอังคารที่","วันพุทธที่","วันพฤหัสบดีที่","วันศุกร์ที่","วันเสาร์ที่")
+ var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
 
- var month = new Array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤษจิกายน","ธันวาคม")
+    var offset = date.getTimezoneOffset() / 60;
+    var hours = date.getHours();
 
- var year= new Array("ชวด","ฉลู","ขาล","เถาะ","มะโรง","มะเส็ง","มะเมีย","มะแม","วอก","ระกา","จอ","กุล") 
+    newDate.setHours(hours - offset);
+	var date = convertUTCDateToLocalDate(new Date(date_string_you_received));
 
- var now = new Date()
- result = now.toLocaleString() +" " + now.toLocaleTimeString();
-
-	messageReturn = result;
+	messageReturn = date.toLocaleString();;
 }
 else if (event.message.text.indexOf("ร้องเพลง") + 1)
 {
