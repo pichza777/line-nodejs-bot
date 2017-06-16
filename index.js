@@ -34,6 +34,9 @@ app.post('/webhook', (req, res) => {
 var messageReturn = 'ว่าไงนะ อีกทีสิ ';
 var messageRand = ['ง่วงจัง','กี่โมงแล้ว ?','ขอบคุณค่ะ','คิดถึงนะ','ไสว่าซิบ่ถิ่มกัน','beta test เอ๋อๆหน่อย','หิวข้าวอะ','ดริ้งกันไหม','อย่าว่ากันดิ'];
 var messageHa = ['lol','ขำหรอ ?','666666','5555555','ตลกจัง','อารมณ์ดีเพราะมีความสุข','ขำหาพร่อง','อิอิ','ตลกละดิ'];
+var messagePicH = ['ว่าไง','เอ้อ ว่ามา','....','เรียบกุอยู่นั้น','มีไรน้อง','มีอะไรให้ช่วยไหม','ใครรวย','อิอิ','ไง'];
+var messageHungry = ['หิวหรอ','กินไรดีอะ','หิวก้อไปหาไรแดกซะ','อิอิ','อยากกินอะไรค่ะ เด๋วพาไป','มีอะไรให้ช่วยไหม','ปะ กินข้าวกัน','กินขี้','หิวเหมือนกัน'];
+var messageFood = ['มาม่าต้ม','ข้าวมันไก่','ขี้','ลูกชิ้นปลาระเบิด','บุฟเฟ่ปะ','MK','Shabu shi','Shabu shit','ราเมง'];
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
@@ -41,11 +44,11 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
   
-if( event.message.text === 'สวัสดี' || event.message.text === 'hello' || event.message.text === 'Hello')
+if( event.message.text.indexOf("สวัสดี' ") +1)
 {
-	messageReturn = 'สวัสดีเหมือนกันจ้า'+ event.source.profile;
+	messageReturn = 'สวัสดีเหมือนกันจ้า';
 }
-else if( event.message.text === 'ควย' || event.message.text === 'สัส' || event.message.text === 'เหี้ย ' || event.message.text === 'กวย')
+else if( event.message.text.indexOf("ควย'") +1 || event.message.text.indexOf("สัส'") +1 || event.message.text.indexOf("เหี้ย'") +1 || event.message.text.indexOf("กวย'") +1)
 {
 	messageReturn = 'ไม่พูดหยาบคายนะค่ะสัส ';
 }
@@ -65,15 +68,9 @@ else if (event.message.text.indexOf("55") + 1)
 }
 else if (event.message.text.indexOf("กี่โมง") + 1)
 {
- var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+ var newDate = new Date();
 
-    var offset = date.getTimezoneOffset() / 60;
-    var hours = date.getHours();
-
-    newDate.setHours(hours - offset);
-	var date = convertUTCDateToLocalDate(new Date(newDate));
-
-	messageReturn = date.toLocaleString();;
+	messageReturn = newDate.toLocaleString();
 }
 else if (event.message.text.indexOf("ร้องเพลง") + 1)
 {
@@ -82,8 +79,8 @@ else if (event.message.text.indexOf("ร้องเพลง") + 1)
 }
 else if (event.message.text.indexOf("ขำ") + 1)
 {
-	
-	messageReturn = 'แล้วแต่ ...';
+	var item = messageHa[Math.floor(Math.random()*messageHa.length)];
+	messageReturn = item;
 }
 else if (event.message.text.indexOf("น่ารัก") + 1)
 {
@@ -97,8 +94,23 @@ else if (event.message.text.indexOf("อิอิ") + 1)
 }
 else if (event.message.text.indexOf("พิช") + 1)
 {
+	var item = messagePicH[Math.floor(Math.random()*messagePicH.length)];
+	messageReturn = item;
+}
+else if (event.message.text.indexOf("หิว") + 1)
+{
+	var item = messageHungry[Math.floor(Math.random()*messageHungry.length)];
+	messageReturn = item;
+}
+else if (event.message.text.indexOf("อาหาร") + 1)
+{
+	var item = messageFood[Math.floor(Math.random()*messageFood.length)];
+	messageReturn = item;
+}
+else if (event.message.text.indexOf("BTC") + 1)
+{
 	//var item = messageRand[Math.floor(Math.random()*messageRand.length)];
-	messageReturn = 'ว่าไง พูดอยู่';
+	messageReturn = 'บิทควย';
 }
 else
 {
