@@ -40,9 +40,10 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
+  const {displayName} = await client.getProfileFromEvent(event)
 if( event.message.text === 'สวัสดี' || event.message.text === 'hello' || event.message.text === 'Hello')
 {
-	messageReturn = 'สวัสดีเหมือนกันจ้า';
+	messageReturn = 'สวัสดีเหมือนกันจ้า'+ {displayName};
 }
 else if( event.message.text === 'ควย' || event.message.text === 'สัส' || event.message.text === 'เหี้ย ' || event.message.text === 'กวย')
 {
