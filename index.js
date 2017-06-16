@@ -70,7 +70,7 @@ else if (event.message.text.indexOf("กี่โมง") + 1)
     var hours = date.getHours();
 
     newDate.setHours(hours - offset);
-	var date = convertUTCDateToLocalDate(new Date(date_string_you_received));
+	var date = convertUTCDateToLocalDate(new Date(newDate));
 
 	messageReturn = date.toLocaleString();;
 }
