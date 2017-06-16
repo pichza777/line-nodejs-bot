@@ -68,7 +68,7 @@ else if (event.message.text.indexOf("55") + 1)
 }
 else if (event.message.text.indexOf("กี่โมง") + 1)
 {
- var newDate = new Date();
+ var newDate = new Date()-420;
 
 	messageReturn = newDate.toLocaleString();
 }
