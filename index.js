@@ -40,7 +40,7 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-  const {displayName} = await client.getProfileFromEvent(event)
+  const {displayName} = await client.getProfileFromEvent(event);
 if( event.message.text === 'สวัสดี' || event.message.text === 'hello' || event.message.text === 'Hello')
 {
 	messageReturn = 'สวัสดีเหมือนกันจ้า'+ {displayName};
