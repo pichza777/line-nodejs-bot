@@ -64,10 +64,8 @@ else if (event.message.text.indexOf("55") + 1)
 }
 else if (event.message.text.indexOf("กี่โมง") + 1)
 {
-	var thday = new Array ("อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์"); 
-	var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
-	var now = new Date();
-	messageReturn = 'วัน '+ thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " + thmonth[now.getMonth()]+ " " + (0+now.getYear()+543);
+	
+	messageReturn = timeupdate();
 }
 else if (event.message.text.indexOf("ร้องเพลง") + 1)
 {
@@ -105,3 +103,35 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
+
+function dateTime() {
+ var days = new Array("วันอาทิตย์ที่","วันจันทร์ที่","วันอังคารที่","วันพุทธที่",
+  "วันพฤหัสบดีที่","วันศุกร์ที่","วันเสาร์ที่")
+
+ var month = new Array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
+"กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤษจิกายน","ธันวาคม")
+
+ var year= new Array("ชวด","ฉลู","ขาล","เถาะ","มะโรง","มะเส็ง","มะเมีย","มะแม","วอก","ระกา","จอ","กุล") 
+
+ var now = new Date()
+ var result = days[now.getDay()]+" "
+ var add1=1900
+ var add2=add1+543
+/* result += now.toLocaleString()  */
+ result += now.getDate()
+ result += " "+month[now.getMonth()]+" พ.ศ. "
+ if(now.getYear())
+ {add1=2;add2=add1+541}
+ result += now.getYear()+add2
+ result += " ปี"+year[(now.getYear()+add2+5)%12]
+ result += " เวลา "+now.getHours()+" นาฬิกา "
+ result += now.getMinutes()+" นาที" 
+ return result
+}
+
+function timeupdate(){
+
+ document.timef.timebox.value=dateTime()
+ setTimeout("timeupdate()",1000)
+}
+
