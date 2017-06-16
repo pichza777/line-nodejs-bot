@@ -66,7 +66,7 @@ else if (event.message.text.indexOf("กี่โมง") + 1)
 {
 	var thday = new Array ("อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์"); 
 	var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
-	var date = new Date();
+	var now = new Date();
 	messageReturn = 'วัน '+ thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " + thmonth[now.getMonth()]+ " " + (0+now.getYear()+543);
 }
 else if (event.message.text.indexOf("ร้องเพลง") + 1)
