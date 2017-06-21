@@ -100,11 +100,13 @@ function handleEvent(event) {
         messageReturn = b;
     }
     else if (event.message.text.indexOf("id") + 1) {
-        event.source.profile().then(function (profile) {
-            messageReturn = ('Hello ' + profile.displayName);
-        }).catch(function (error) {
-            messageReturn == "error";
-        });
+        //event.source.profile().then(function (profile) {
+        //    messageReturn = ('Hello ' + profile.displayName);
+        //}).catch(function (error) {
+        //    messageReturn == "error";
+        //});
+        var aaaa = event.source.profile();
+        messageReturn = aaaa.toString();
     }
     else {
         messageReturn = '';
