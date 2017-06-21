@@ -100,16 +100,11 @@ function handleEvent(event) {
         messageReturn = b;
     }
     else if (event.message.text.indexOf("id") + 1) {
-        client.getProfile('<userId>')
-            .then((profile) => {
-                messageReturn += (profile.displayName);
-                messageReturn += (profile.userId);
-                messageReturn += (profile.pictureUrl);
-                messageReturn += (profile.statusMessage);
-            })
-            .catch((err) => {
-                messageReturn = "Error";
-            });
+        event.source.profile().then(function (profile) {
+            messageReturn = ('Hello ' + profile.displayName);
+        }).catch(function (error) {
+            messageReturn == "error";
+        });
     }
     else {
         messageReturn = '';
