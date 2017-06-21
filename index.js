@@ -47,7 +47,7 @@ function handleEvent(event) {
     if (event.message.text.indexOf("สวัสดี' ") + 1) {
         messageReturn = 'สวัสดีเหมือนกันจ้า';
     }
-    else if ((event.message.text.indexOf("ควย'") + 1) || (event.message.text.indexOf("สัส'") + 1) || (event.message.text.indexOf("เหี้ย'") + 1 || event.message.text.indexOf("กวย'") + 1)) {
+    else if ((event.message.text.indexOf("ควย") + 1) || (event.message.text.indexOf("สัส") + 1) || (event.message.text.indexOf("เหี้ย") + 1 || event.message.text.indexOf("กวย") + 1)) {
         messageReturn = 'ไม่พูดหยาบคายนะค่ะสัส ';
     }
     else if (event.message.text.indexOf("ทำ") + 1) {
