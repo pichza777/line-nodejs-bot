@@ -100,11 +100,13 @@ function handleEvent(event) {
         messageReturn = b;
     }
     else if (event.message.text.indexOf("id") + 1) {
-        client.getProfile('<user id>').then(function (data) {
-            messageReturn = data;
-        }).catch(function (error) {
-            // add your code when error. 
-        });
+        client.getProfile('<userId>')
+            .then((profile) => {
+                messageReturn = profile.userId;
+            })
+            .catch((err) => {
+                messageReturn = "ผิดพลาด";
+            });
        
     }
     else {
