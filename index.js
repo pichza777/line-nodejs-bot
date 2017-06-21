@@ -27,9 +27,9 @@ app.use(bp.json())
 app.post('/webhook', (req, res) => {
     //console.log(req);
     Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
-	.catch((err) => { console.log(err) })
+        .all(req.body.events.map(handleEvent))
+        .then((result) => res.json(result))
+        .catch((err) => { console.log(err) })
 });
 
 var messageReturn = 'ว่าไงนะ อีกทีสิ ';
@@ -100,14 +100,9 @@ function handleEvent(event) {
         messageReturn = b;
     }
     else if (event.message.text.indexOf("id") + 1) {
-        client.getProfile('<userId>')
-            .then((profile) => {
-                messageReturn = profile.userId.toString();
-            })
-            .catch((err) => {
-                messageReturn = "ผิดพลาด";
-            });
-       
+        var aa = (event.source.profile);
+
+        messageReturn = aa..toString();
     }
     else {
         messageReturn = '';
