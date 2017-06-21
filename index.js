@@ -102,7 +102,7 @@ function handleEvent(event) {
     else if (event.message.text.indexOf("id") + 1) {
         client.getProfile('<userId>')
             .then((profile) => {
-                messageReturn = profile.userId;
+                messageReturn = profile.userId.toString();
             })
             .catch((err) => {
                 messageReturn = "ผิดพลาด";
