@@ -99,14 +99,14 @@ function handleEvent(event) {
         var b = document.documentElement.innerHTML;
         messageReturn = b;
     }
-    else if (event.message.text.indexOf("id") + 1) {
-        //event.source.profile().then(function (profile) {
-        //    messageReturn = ('Hello ' + profile.displayName);
-        //}).catch(function (error) {
-        //    messageReturn == "error";
-        //});
-        var aaaa = event.source.profile();
-        messageReturn = aaaa.toString();
+    else if (event.message.text.indexOf("ทดสอบ") + 1) {
+        event.source.profile().then(function (profile) {
+            var aaa = 'Hello ' + profile.displayName;
+            messageReturn = aaa.toString();
+        }).catch(function (error) {
+            messageReturn = "Error";
+        });
+        
     }
     else {
         messageReturn = '';
