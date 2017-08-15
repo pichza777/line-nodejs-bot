@@ -100,12 +100,12 @@ function handleEvent(event) {
         messageReturn = b;
     }
     else if (event.message.text.indexOf("ทดสอบ") + 1) {
-        event.source.profile().then(function (profile) {
-            var aaa = 'Hello ' + profile.displayName;
-            messageReturn = aaa.toString();
-        }).catch(function (error) {
-            messageReturn = "Error";
-        });
+        //event.source.profile().then(function (profile) {
+        //    var aaa = 'Hello ' + profile.displayName;
+        //    messageReturn = aaa.toString();
+        //}).catch(function (error) {
+        //    messageReturn = "Error";
+        //});
         
     }
     else {
